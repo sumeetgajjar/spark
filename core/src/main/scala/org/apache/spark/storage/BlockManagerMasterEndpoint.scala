@@ -557,9 +557,10 @@ class BlockManagerMasterEndpoint(
       if (pushBasedShuffleEnabled) {
         addMergerLocation(id)
       }
+
+      listenerBus.post(SparkListenerBlockManagerAdded(time, id,
+        maxOnHeapMemSize + maxOffHeapMemSize, Some(maxOnHeapMemSize), Some(maxOffHeapMemSize)))
     }
-    listenerBus.post(SparkListenerBlockManagerAdded(time, id, maxOnHeapMemSize + maxOffHeapMemSize,
-        Some(maxOnHeapMemSize), Some(maxOffHeapMemSize)))
     id
   }
 
