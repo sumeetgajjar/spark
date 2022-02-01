@@ -41,7 +41,7 @@ class SparkUncaughtExceptionHandlerSuite extends SparkFunSuite {
     case (throwable: ThrowableTypes.ThrowableTypesVal,
     exitOnUncaughtException: Boolean, expectedExitCode) =>
       test(s"SPARK-30310: Test uncaught $throwable, " +
-          s"exitOnUncaughtException = $exitOnUncaughtException") {
+          s"exitOnUncaughtException = $exitOnUncaughtException", ExcludeForCodeCoverage) {
 
         // creates a ThrowableThrower process via spark-class and verify the exit code
         val process = Utils.executeCommand(
