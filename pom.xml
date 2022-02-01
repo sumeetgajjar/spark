@@ -2714,6 +2714,15 @@
     <pluginManagement>
       <plugins>
         <plugin>
+          <groupId>org.scoverage</groupId>
+          <artifactId>scoverage-maven-plugin</artifactId>
+          <version>1.4.11</version>
+          <configuration>
+            <scalaVersion>${scala.version}</scalaVersion>
+            <scalacPluginVersion>1.4.11</scalacPluginVersion>
+          </configuration>
+        </plugin>
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
           <version>3.0.0-M2</version>
