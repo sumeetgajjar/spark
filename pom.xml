@@ -2928,7 +2928,7 @@
               <test.src.tables>src</test.src.tables>
             </systemProperties>
             <failIfNoTests>false</failIfNoTests>
-            <excludedGroups>${test.exclude.tags},${test.codeCoverage.exclude.tags}</excludedGroups>
+            <excludedGroups>${test.codeCoverage.exclude.tags},${test.exclude.tags}</excludedGroups>
             <groups>${test.include.tags}</groups>
           </configuration>
           <executions>
