@@ -292,5 +292,6 @@ abstract class SparkFunSuite
     }
   }
 
+//  TODO move this to spark-tags
   object ExcludeForCodeCoverage extends Tag("ExcludeForCodeCoverage")
 }
