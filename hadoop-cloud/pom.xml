@@ -34,6 +34,7 @@
   </description>
   <properties>
     <sbt.project.name>hadoop-cloud</sbt.project.name>
+    <codeCoverageReportDir>${project.parent.build.directory}</codeCoverageReportDir>
   </properties>
 
   <build>

@@ -37,6 +37,7 @@
     <hadoop.deps.scope>provided</hadoop.deps.scope>
     <hive.deps.scope>provided</hive.deps.scope>
     <parquet.deps.scope>provided</parquet.deps.scope>
+    <codeCoverageReportDir>${project.parent.build.directory}</codeCoverageReportDir>
   </properties>
 
   <dependencies>

@@ -308,6 +308,9 @@
     treats it as a simple string leading to the above error.
     Setting "argLine" to an empty value solves the issue. -->
     <argLine/>
+    <codeCoverageReportDir>${project.build.directory}</codeCoverageReportDir>
+    <jacocoReportFile>${codeCoverageReportDir}/aggregated-jacoco.exec</jacocoReportFile>
+    <jacocoReportOutputDir>${codeCoverageReportDir}/site/jacoco_html/${sbt.project.name}</jacocoReportOutputDir>
   </properties>
   <repositories>
     <repository>
@@ -3801,9 +3804,8 @@
                 <!-- TODO check if "*Test*" needs to be included here -->
                 <excludedFiles></excludedFiles>
                 <aggregate>true</aggregate>
-                <!-- TODO test with false as well -->
-<!--                <aggregateOnly>true</aggregateOnly>-->
                 <failOnError>false</failOnError>
+                <encoding>${project.build.sourceEncoding}</encoding>
               </configuration>
             </plugin>
             <plugin>
@@ -3819,6 +3821,10 @@
                   <goals>
                     <goal>prepare-agent</goal>
                   </goals>
+                  <configuration>
+                    <append>true</append>
+                    <destFile>${jacocoReportFile}</destFile>
+                  </configuration>
                 </execution>
                 <execution>
                   <id>jacoco-report</id>
@@ -3826,6 +3832,12 @@
                   <goals>
                     <goal>report</goal>
                   </goals>
+                  <configuration>
+                    <dataFile>${jacocoReportFile}</dataFile>
+                    <outputDirectory>${jacocoReportOutputDir}</outputDirectory>
+                    <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+                    <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
+                  </configuration>
                 </execution>
               </executions>
             </plugin>

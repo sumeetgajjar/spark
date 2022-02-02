@@ -32,6 +32,7 @@
   <url>http://spark.apache.org/</url>
   <properties>
     <sbt.project.name>hive</sbt.project.name>
+    <codeCoverageReportDir>${project.parent.build.directory}</codeCoverageReportDir>
   </properties>
 
   <dependencies>
