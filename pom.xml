@@ -309,8 +309,8 @@
     Setting "argLine" to an empty value solves the issue. -->
     <argLine/>
     <codeCoverageReportDir>${project.build.directory}</codeCoverageReportDir>
-    <jacocoReportFile>${codeCoverageReportDir}/aggregated-jacoco.exec</jacocoReportFile>
-    <jacocoReportOutputDir>${codeCoverageReportDir}/site/jacoco_html/${sbt.project.name}</jacocoReportOutputDir>
+    <jacocoReportFile>${project.build.directory}/jacoco.exec</jacocoReportFile>
+    <jacocoReportOutputDir>${project.build.directory}/site/jacoco</jacocoReportOutputDir>
   </properties>
   <repositories>
     <repository>

@@ -359,7 +359,7 @@ public class SparkSaslSuite {
     for (Method m : rpcHandlerMethods) {
       /* For data collection purposes, Jacoco adds a static field $jacocoData and a static method
       $jacocoInit() to each class under instrumentation. Both members are marked as synthetic.
-      The following FAQ advised to ignore both of these members:
+      The following FAQ advises ignoring both of these members:
       https://www.jacoco.org/jacoco/trunk/doc/faq.html
       */
       if (m.isSynthetic()) {

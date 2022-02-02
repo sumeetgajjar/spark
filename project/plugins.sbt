@@ -44,7 +44,3 @@ libraryDependencies += "org.ow2.asm"  % "asm-commons" % "9.1"
 addSbtPlugin("com.simplytyped" % "sbt-antlr4" % "0.8.3")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-pom-reader" % "2.2.0")
-
-addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.9.3")
-
-addSbtPlugin("com.github.sbt" % "sbt-jacoco" % "3.4.0")
