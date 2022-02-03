@@ -311,8 +311,9 @@
     <argLine/>
     <codeCoverageReportRootDir>${project.basedir}/target/code-coverage</codeCoverageReportRootDir>
     <jacocoDestFile>${codeCoverageReportRootDir}/jacoco.exec</jacocoDestFile>
-    <jacocoReportDir>${codeCoverageReportRootDir}/jacoco_reports</jacocoReportDir>
-    <scoverageReportDir>${codeCoverageReportRootDir}/scoverage_reports</scoverageReportDir>
+    <jacocoReportDir>${codeCoverageReportRootDir}/jacoco-reports</jacocoReportDir>
+    <scoverageDataDir>${codeCoverageReportRootDir}/scoverage-data</scoverageDataDir>
+    <scoverageReportDir>${codeCoverageReportRootDir}/scoverage-reports</scoverageReportDir>
   </properties>
   <repositories>
     <repository>
@@ -3807,6 +3808,7 @@
                 <excludedFiles></excludedFiles>
                 <aggregate>true</aggregate>
                 <failOnError>false</failOnError>
+                <dataDirectory>${scoverageDataDir}</dataDirectory>
                 <outputDirectory>${scoverageReportDir}</outputDirectory>
                 <xmlOutputDirectory>${scoverageReportDir}</xmlOutputDirectory>
                 <encoding>${project.build.sourceEncoding}</encoding>
