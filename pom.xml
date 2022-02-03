@@ -310,8 +310,9 @@
     Setting "argLine" to an empty value solves the issue. -->
     <argLine/>
     <codeCoverageReportRootDir>${project.basedir}/target/code-coverage</codeCoverageReportRootDir>
-    <jacocoReportDir>${codeCoverageReportRootDir}/jacoco</jacocoReportDir>
-    <scoverageReportDir>${codeCoverageReportRootDir}/scoverage</scoverageReportDir>
+    <jacocoDestFile>${codeCoverageReportRootDir}/jacoco.exec</jacocoDestFile>
+    <jacocoReportDir>${codeCoverageReportRootDir}/jacoco_reports</jacocoReportDir>
+    <scoverageReportDir>${codeCoverageReportRootDir}/scoverage_reports</scoverageReportDir>
   </properties>
   <repositories>
     <repository>
@@ -3835,6 +3836,7 @@
                     <goal>report</goal>
                   </goals>
                   <configuration>
+                    <dataFile>${jacocoDestFile}</dataFile>
                     <outputDirectory>${jacocoReportDir}</outputDirectory>
                     <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
                     <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
