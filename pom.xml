@@ -309,12 +309,9 @@
     treats it as a simple string leading to the above error.
     Setting "argLine" to an empty value solves the issue. -->
     <argLine/>
-    <codeCoverageRootDir>${project.basedir}/target/code-coverage</codeCoverageRootDir>
-    <jacocoRootDir>${codeCoverageRootDir}/jacoco</jacocoRootDir>
-    <jacocoDestFile>${jacocoRootDir}/jacoco.exec</jacocoDestFile>
-    <jacocoReportOutputDir>${jacocoRootDir}/reports</jacocoReportOutputDir>
-    <scoverageRootDir>${codeCoverageRootDir}/scoverage</scoverageRootDir>
-    <scoverageReportOutputDir>${scoverageRootDir}/reports</scoverageReportOutputDir>
+    <codeCoverageReportRootDir>${project.basedir}/target/code-coverage</codeCoverageReportRootDir>
+    <jacocoReportDir>${codeCoverageReportRootDir}/jacoco</jacocoReportDir>
+    <scoverageReportDir>${codeCoverageReportRootDir}/scoverage</scoverageReportDir>
   </properties>
   <repositories>
     <repository>
@@ -3809,8 +3806,8 @@
                 <excludedFiles></excludedFiles>
                 <aggregate>true</aggregate>
                 <failOnError>false</failOnError>
-                <outputDirectory>${scoverageReportOutputDir}</outputDirectory>
-                <xmlOutputDirectory>${scoverageReportOutputDir}</xmlOutputDirectory>
+                <outputDirectory>${scoverageReportDir}</outputDirectory>
+                <xmlOutputDirectory>${scoverageReportDir}</xmlOutputDirectory>
                 <encoding>${project.build.sourceEncoding}</encoding>
               </configuration>
             </plugin>
@@ -3838,8 +3835,7 @@
                     <goal>report</goal>
                   </goals>
                   <configuration>
-                    <dataFile>${jacocoDestFile}</dataFile>
-                    <outputDirectory>${jacocoReportOutputDir}</outputDirectory>
+                    <outputDirectory>${jacocoReportDir}</outputDirectory>
                     <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
                     <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
                   </configuration>

@@ -138,8 +138,7 @@
                 <goal>report-aggregate</goal>
               </goals>
               <configuration>
-                <dataFileIncludes>**/code-coverage/jacoco.exec</dataFileIncludes>
-                <outputDirectory>${jacocoRootDir}/jacoco-aggregate</outputDirectory>
+                <outputDirectory>${jacocoReportDir}/jacoco-aggregate</outputDirectory>
                 <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
                 <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
               </configuration>
