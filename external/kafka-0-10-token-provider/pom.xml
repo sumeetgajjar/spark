@@ -29,7 +29,6 @@
   <artifactId>spark-token-provider-kafka-0-10_2.12</artifactId>
   <properties>
     <sbt.project.name>token-provider-kafka-0-10</sbt.project.name>
-    <codeCoverageReportDir>${project.parent.build.directory}</codeCoverageReportDir>
   </properties>
   <packaging>jar</packaging>
   <name>Kafka 0.10+ Token Provider for Streaming</name>

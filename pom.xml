@@ -223,6 +223,7 @@
     <spark.shade.packageName>org.sparkproject</spark.shade.packageName>
 
     <!-- Modules that copy jars to the build directory should do so under this location. -->
+    <!-- TODO check if modifying this solves CDNF -->
     <jars.target.dir>${project.build.directory}/scala-${scala.binary.version}/jars</jars.target.dir>
 
     <!-- Allow modules to enable / disable certain build plugins easily. -->
@@ -308,9 +309,12 @@
     treats it as a simple string leading to the above error.
     Setting "argLine" to an empty value solves the issue. -->
     <argLine/>
-    <codeCoverageReportDir>${project.build.directory}</codeCoverageReportDir>
-    <jacocoReportFile>${project.build.directory}/jacoco.exec</jacocoReportFile>
-    <jacocoReportOutputDir>${project.build.directory}/site/jacoco</jacocoReportOutputDir>
+    <codeCoverageRootDir>${project.basedir}/target/code-coverage</codeCoverageRootDir>
+    <jacocoRootDir>${codeCoverageRootDir}/jacoco</jacocoRootDir>
+    <jacocoDestFile>${jacocoRootDir}/jacoco.exec</jacocoDestFile>
+    <jacocoReportOutputDir>${jacocoRootDir}/reports</jacocoReportOutputDir>
+    <scoverageRootDir>${codeCoverageRootDir}/scoverage</scoverageRootDir>
+    <scoverageReportOutputDir>${scoverageRootDir}/reports</scoverageReportOutputDir>
   </properties>
   <repositories>
     <repository>
@@ -3805,6 +3809,8 @@
                 <excludedFiles></excludedFiles>
                 <aggregate>true</aggregate>
                 <failOnError>false</failOnError>
+                <outputDirectory>${scoverageReportOutputDir}</outputDirectory>
+                <xmlOutputDirectory>${scoverageReportOutputDir}</xmlOutputDirectory>
                 <encoding>${project.build.sourceEncoding}</encoding>
               </configuration>
             </plugin>
@@ -3822,8 +3828,7 @@
                     <goal>prepare-agent</goal>
                   </goals>
                   <configuration>
-                    <append>true</append>
-                    <destFile>${jacocoReportFile}</destFile>
+                    <destFile>${jacocoDestFile}</destFile>
                   </configuration>
                 </execution>
                 <execution>
@@ -3833,7 +3838,7 @@
                     <goal>report</goal>
                   </goals>
                   <configuration>
-                    <dataFile>${jacocoReportFile}</dataFile>
+                    <dataFile>${jacocoDestFile}</dataFile>
                     <outputDirectory>${jacocoReportOutputDir}</outputDirectory>
                     <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
                     <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>

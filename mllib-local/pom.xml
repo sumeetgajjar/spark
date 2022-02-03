@@ -28,7 +28,6 @@
   <artifactId>spark-mllib-local_2.12</artifactId>
   <properties>
     <sbt.project.name>mllib-local</sbt.project.name>
-    <codeCoverageReportDir>${project.parent.build.directory}</codeCoverageReportDir>
   </properties>
   <packaging>jar</packaging>
   <name>Spark Project ML Local Library</name>

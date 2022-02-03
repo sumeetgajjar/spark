@@ -31,7 +31,6 @@
 
   <properties>
     <sbt.project.name>streaming-kinesis-asl</sbt.project.name>
-    <codeCoverageReportDir>${project.parent.build.directory}</codeCoverageReportDir>
   </properties>
 
   <dependencies>

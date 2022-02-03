@@ -34,7 +34,6 @@
     <sbt.project.name>assembly</sbt.project.name>
     <build.testJarPhase>none</build.testJarPhase>
     <build.copyDependenciesPhase>package</build.copyDependenciesPhase>
-    <codeCoverageReportDir>${project.parent.build.directory}</codeCoverageReportDir>
   </properties>
 
   <dependencies>
@@ -126,6 +125,29 @@
           </configuration>
       </plugin>
     </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>jacoco-report-aggregate</id>
+              <phase>test</phase>
+              <goals>
+                <goal>report-aggregate</goal>
+              </goals>
+              <configuration>
+                <dataFileIncludes>**/code-coverage/jacoco.exec</dataFileIncludes>
+                <outputDirectory>${jacocoRootDir}/jacoco-aggregate</outputDirectory>
+                <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+                <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
 
   <profiles>

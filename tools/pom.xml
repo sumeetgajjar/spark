@@ -27,7 +27,6 @@
   <artifactId>spark-tools_2.12</artifactId>
   <properties>
     <sbt.project.name>tools</sbt.project.name>
-    <codeCoverageReportDir>${project.parent.build.directory}</codeCoverageReportDir>
   </properties>
   <packaging>jar</packaging>
   <name>Spark Project Tools</name>

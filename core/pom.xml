@@ -32,7 +32,6 @@
 
   <properties>
     <sbt.project.name>core</sbt.project.name>
-    <codeCoverageReportDir>${project.parent.build.directory}</codeCoverageReportDir>
   </properties>
   
   <dependencies>
