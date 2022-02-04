@@ -614,7 +614,7 @@ class SparkSubmitSuite
     }
   }
 
-  test("launch simple application with spark-submit", ExcludeForCodeCoverage) {
+  test("launch simple application with spark-submit") {
     val unusedJar = TestUtils.createJarWithClasses(Seq.empty)
     val args = Seq(
       "--class", SimpleApplicationTest.getClass.getName.stripSuffix("$"),
