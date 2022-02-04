@@ -36,8 +36,12 @@ _DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Preserve the calling directory
 _CALLING_DIR="$(pwd)"
 # Options used during compilation
-# TODO only increase this if codecoverage is one
-_COMPILE_JVM_OPTS="-Xmx3g -XX:ReservedCodeCacheSize=1g -Xss128m"
+_COMPILE_XMX="2g"
+if [[ $SCALA_CODE_COVERAGE == 1 ]]; then
+  # Scoverage requires a bit more memory while performing report aggregation at the end of the build.
+  _COMPILE_XMX="3g"
+fi
+_COMPILE_JVM_OPTS="-Xmx$_COMPILE_XMX -XX:ReservedCodeCacheSize=1g -Xss128m"
 
 # Installs any application tarball given a URL, the expected tarball name,
 # and, optionally, a checkable binary path to determine if the binary has

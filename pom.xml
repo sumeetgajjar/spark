@@ -210,7 +210,10 @@
 
     <!-- Some UI tests require Chrome and Chrome driver installed so those tests are disabled by default. -->
     <test.default.exclude.tags>org.apache.spark.tags.ChromeUITest</test.default.exclude.tags>
-    <test.codeCoverage.exclude.tags/>
+    <!-- When surefire plugins runs without code-coverage profile, the <excludedGroups> yields ",".
+    This causes a failure with "Invalid group expression: ','. Reason: Encountered "" at line 1, column 1."
+    error. Adding a placeholder tag to prevent this failure. -->
+    <test.codeCoverage.exclude.tags>PlaceHolderTagToPreventSurefireFailure</test.codeCoverage.exclude.tags>
     <test.exclude.tags></test.exclude.tags>
     <test.include.tags></test.include.tags>
 
@@ -3778,6 +3781,10 @@
       <id>code-coverage</id>
       <activation>
         <activeByDefault>false</activeByDefault>
+        <property>
+          <name>env.SCALA_CODE_COVERAGE</name>
+          <value>1</value>
+        </property>
       </activation>
       <properties>
         <test.codeCoverage.exclude.tags>ExcludeForCodeCoverage</test.codeCoverage.exclude.tags>
