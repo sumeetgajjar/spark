@@ -226,7 +226,6 @@
     <spark.shade.packageName>org.sparkproject</spark.shade.packageName>
 
     <!-- Modules that copy jars to the build directory should do so under this location. -->
-    <!-- TODO check if modifying this solves CDNF -->
     <jars.target.dir>${project.build.directory}/scala-${scala.binary.version}/jars</jars.target.dir>
 
     <!-- Allow modules to enable / disable certain build plugins easily. -->
@@ -3787,7 +3786,7 @@
         </property>
       </activation>
       <properties>
-        <test.codeCoverage.exclude.tags>ExcludeForCodeCoverage</test.codeCoverage.exclude.tags>
+        <test.codeCoverage.exclude.tags>org.apache.spark.tags.ExcludeForCodeCoverage</test.codeCoverage.exclude.tags>
       </properties>
       <build>
         <plugins>

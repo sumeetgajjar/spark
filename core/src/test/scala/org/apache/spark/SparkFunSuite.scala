@@ -29,7 +29,7 @@ import org.apache.logging.log4j._
 import org.apache.logging.log4j.core.{LogEvent, Logger, LoggerContext}
 import org.apache.logging.log4j.core.appender.AbstractAppender
 import org.apache.logging.log4j.core.config.Property
-import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll, BeforeAndAfterEach, Failed, Outcome, Tag}
+import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll, BeforeAndAfterEach, Failed, Outcome}
 import org.scalatest.funsuite.AnyFunSuite
 
 import org.apache.spark.deploy.LocalSparkCluster
@@ -291,7 +291,4 @@ abstract class SparkFunSuite
       _loggingEvents.filterNot(_ == null)
     }
   }
-
-//  TODO move this to spark-tags
-  object ExcludeForCodeCoverage extends Tag("ExcludeForCodeCoverage")
 }
