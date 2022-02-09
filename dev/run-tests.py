@@ -234,6 +234,10 @@ def get_hadoop_profiles(hadoop_version):
         sys.exit(int(os.environ.get("CURRENT_BLOCK", 255)))
 
 
+def scala_code_coverage_enabled():
+    return os.environ.get("SCALA_CODE_COVERAGE", "0") == "1"
+
+
 def build_spark_maven(extra_profiles):
     # Enable all of the profiles for the build:
     build_profiles = extra_profiles + modules.root.build_profile_flags
@@ -318,7 +322,12 @@ def detect_binary_inop_with_mima(extra_profiles):
 
 
 def run_scala_tests_maven(test_profiles):
-    mvn_test_goals = ["test", "--fail-at-end"]
+    # In order for scoverage to instrument the classes for coverage, it needs to take over running
+    # all the tests.
+    # scoverage:report internally instruments the classes during compilation, runs the test against
+    # the instrumented classes and finally generates the coverage report files (XML, HTML).
+    test_cmd = "scoverage:report" if scala_code_coverage_enabled() else "test"
+    mvn_test_goals = [test_cmd, "--fail-at-end"]
 
     profiles_and_goals = test_profiles + mvn_test_goals
 
@@ -512,7 +521,10 @@ def main():
         os.environ["PATH"] = "/home/anaconda/envs/py36/bin:" + os.environ.get("PATH")
     else:
         # else we're running locally or GitHub Actions.
-        build_tool = "sbt"
+
+        # Scala and Java code coverage is only supported through maven for now, we'll soon extend it
+        # to sbt as well.
+        build_tool = "maven" if scala_code_coverage_enabled() else "sbt"
         scala_version = os.environ.get("SCALA_PROFILE")
         hadoop_version = os.environ.get("HADOOP_PROFILE", "hadoop3")
         if "GITHUB_ACTIONS" in os.environ:
